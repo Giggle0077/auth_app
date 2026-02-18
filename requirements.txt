@@ -1,0 +1,23 @@
+# Core FastAPI dependencies
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+
+# Production WSGI server
+gunicorn==23.0.0
+
+# Database
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.10
+
+# Validation & Security
+# Using newer versions with pre-built wheels for Windows
+pydantic[email]==2.10.3
+pydantic-core==2.27.1
+bcrypt==4.2.1
+
+# Templates & Static Files
+jinja2==3.1.4
+python-multipart==0.0.12
+
+# Environment variables (recommended for production)
+python-dotenv==1.0.1

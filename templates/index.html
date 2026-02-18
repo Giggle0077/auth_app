@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Home – AuthApp{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align:center;">
+  <h1>Welcome 👋</h1>
+  <p class="subtitle">Secure authentication with FastAPI + Jinja2</p>
+  <a href="/register"><button class="btn">Create Account</button></a>
+  <div class="link-row" style="margin-top:1rem;">
+    Already have an account? <a href="/login">Log in</a>
+  </div>
+</div>
+{% endblock %}

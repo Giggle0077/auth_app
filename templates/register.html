@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Register – AuthApp{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h1>Create Account</h1>
+  <p class="subtitle">Sign up with your email and a strong password.</p>
+
+  {% if success %}
+  <div class="success-box">{{ success }}</div>
+  {% endif %}
+
+  {% if errors %}
+  <ul class="errors">
+    {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  <form method="post" action="/register">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" value="{{ email or '' }}" placeholder="you@example.com" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Create a strong password" required
+           oninput="checkStrength(this.value)" />
+
+    <div class="password-strength" id="strengthHint">
+      Password must have: 8+ characters, uppercase, lowercase, digit, special char.
+    </div>
+
+    <label for="confirm_password">Confirm Password</label>
+    <input type="password" id="confirm_password" name="confirm_password" placeholder="Repeat your password" required />
+
+    <button type="submit" class="btn">Register</button>
+  </form>
+
+  <div class="link-row">Already have an account? <a href="/login">Log in</a></div>
+</div>
+
+<script>
+function checkStrength(pw) {
+  const hint = document.getElementById('strengthHint');
+  const checks = [
+    { re: /.{8,}/, msg: '✓ 8+ characters' },
+    { re: /[A-Z]/, msg: '✓ Uppercase letter' },
+    { re: /[a-z]/, msg: '✓ Lowercase letter' },
+    { re: /\d/, msg: '✓ Digit' },
+    { re: /[!@#$%^&*(),.?":{}|<>]/, msg: '✓ Special character' },
+  ];
+  const results = checks.map(c => {
+    const ok = c.re.test(pw);
+    return `<span style="color:${ok ? '#86efac' : '#6b7280'}">${ok ? c.msg : c.msg.replace('✓','✗')}</span>`;
+  });
+  hint.innerHTML = results.join(' &nbsp; ');
+}
+</script>
+{% endblock %}
