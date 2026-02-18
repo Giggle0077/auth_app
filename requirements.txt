@@ -10,14 +10,13 @@ sqlalchemy==2.0.36
 psycopg2-binary==2.9.10
 
 # Validation & Security
-# Using newer versions with pre-built wheels for Windows
+# Let pip choose compatible pydantic-core version
 pydantic[email]==2.10.3
-pydantic-core==2.27.1
 bcrypt==4.2.1
 
 # Templates & Static Files
 jinja2==3.1.4
 python-multipart==0.0.12
 
-# Environment variables (recommended for production)
+# Environment variables
 python-dotenv==1.0.1
